@@ -1,3 +1,36 @@
+<button onclick="mostrarAnalisis()" style="margin-top:20px; padding:14px 28px; background-color:#000; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer;">
+  Analizar
+</button>
+
+<div id="resultado" style="margin-top:40px; max-width:600px; background:#fff; border:1px solid #eee; border-radius:8px; padding:20px; display:none;">
+  <p id="textoAnalisis" style="font-size:16px; color:#333;"></p>
+</div>
+
+<script>
+function mostrarAnalisis() {
+  const boton = event.target;
+  const resultado = document.getElementById("resultado");
+  const texto = document.getElementById("textoAnalisis");
+
+  boton.disabled = true;
+  boton.innerText = "Analizando...";
+
+  texto.innerText = "Leyendo cláusulas de cobertura, detectando exclusiones y condiciones relevantes...";
+  resultado.style.display = "block";
+
+  setTimeout(() => {
+    texto.innerHTML = `
+      <strong>Análisis preliminar:</strong><br><br>
+      • Se detecta cobertura completa para daños materiales, pero sin extensión a terceros.<br>
+      • Plazo de vigencia: 12 meses.<br>
+      • Exclusión destacada: pérdida por mal uso o negligencia.<br><br>
+      <em>Recomendación:</em> revisar condiciones de renovación automática y deducibles.
+    `;
+    boton.disabled = false;
+    boton.innerText = "Analizar";
+  }, 2500);
+}
+</script>
 <body style="font-family: 'Helvetica Neue', sans-serif; background-color: #fafafa; color: #222; margin: 0; padding: 0;">
 
   <header style="text-align:center; padding: 60px 20px;">
